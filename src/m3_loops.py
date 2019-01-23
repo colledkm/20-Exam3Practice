@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Katana Colledge.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -46,7 +46,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ###########################################################################
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -136,6 +136,15 @@ def run_test_practice_problem3():
     #             that they are adequate tests!
     ###########################################################################
 
+    # Test 15
+    expected = []
+    answer = practice_problem3(-99,0,78)
+    print('Expected and actual are:', expected, answer)
+
+    # Test 16
+    expected = [0,1]
+    answer = practice_problem3(-2,2,0)
+    print('Expected and actual are:', expected, answer)
 
 def practice_problem3(start, n, threshold):
     """
@@ -209,7 +218,7 @@ def practice_problem3(start, n, threshold):
       :type threshold: float
     """
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ###########################################################################
@@ -217,7 +226,24 @@ def practice_problem3(start, n, threshold):
     #    DIFFICULTY:      5
     #    TIME ESTIMATE:   < 15 minutes.
     ###########################################################################
-
+    ans = []
+    count = start
+    if n == 0:
+        return ans
+    elif threshold > 2**0.5:
+        for k in range(start,start+n):
+            ans.append(k)
+        return ans
+    else:
+        while True:
+            if n <= len(ans):
+                break
+            cosine = math.cos(count)
+            sine = math.sin(count)
+            if cosine+sine > threshold:
+                ans.append(count)
+            count = count+1
+        return ans
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
