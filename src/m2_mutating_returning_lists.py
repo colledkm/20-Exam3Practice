@@ -36,7 +36,7 @@ def main():
 
 
 def run_test_doubler():
-    """ Tests the    doubler    function. """
+    """ Tests the    doubler    function.  """
     # -------------------------------------------------------------------------
     # DONE: 2. Implement this TEST function.
     #   It TESTS the  doubler  function defined below.
