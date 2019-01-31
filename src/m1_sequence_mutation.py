@@ -6,7 +6,7 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
+         and Katana Colledge.
 """  # DONE: 1. Katana Colledge.
 
 
