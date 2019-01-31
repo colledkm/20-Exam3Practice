@@ -90,7 +90,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -102,7 +102,29 @@ def hourglass(window, n, point, radius, color):
     #    DIFFICULTY:      8
     #    TIME ESTIMATE:  25 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
-
+    import math
+    original_pt = point.clone()
+    pt = rg.Point(original_pt.x, original_pt.y)
+    for k in range(n):
+        pt.y = original_pt.y + 2*radius*math.sin(60*math.pi/180)*k
+        for j in range(-k,k+1,2):
+            pt.x = original_pt.x + radius*j
+            circle = rg.Circle(pt,radius)
+            circle.fill_color=color
+            circle.attach_to(window)
+            line_pt1 = rg.Line(rg.Point(pt.x-radius,pt.y),rg.Point(pt.x+radius,pt.y))
+            line_pt1.attach_to(window)
+            window.render()
+    for k in range(n):
+        pt.y = original_pt.y - 2*radius*math.sin(60*math.pi/180)*k
+        for j in range(-k,k+1,2):
+            pt.x = original_pt.x + radius*j
+            circle = rg.Circle(pt,radius)
+            circle.fill_color=color
+            circle.attach_to(window)
+            line_pt1 = rg.Line(rg.Point(pt.x-radius,pt.y),rg.Point(pt.x+radius,pt.y))
+            line_pt1.attach_to(window)
+            window.render()
 
 def run_test_many_hourglasses():
     """ Tests the    many_hourglasses    function. """
@@ -164,7 +186,7 @@ def many_hourglasses(window, square, m, colors):
     each of which denotes a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -180,6 +202,26 @@ def many_hourglasses(window, square, m, colors):
     #                         a correct "hourglass" function above)
     #    TIME ESTIMATE:  20 minutes (warning: this problem is challenging)
     # -------------------------------------------------------------------------
+    import math
+    center = square.center
+    radius = square.length_of_each_side*0.5
+    x=0
+    for k in range(m):
+        color = colors[x]
+        hourglass(window, k+1, center, radius, color)
+        width = radius*2*(k+1)
+        height = 2*radius + 4*radius*math.sin(math.pi*60/180)*(k)
+        point1 = rg.Point(center.x-width*0.5,center.y-height*0.5)
+        point2 = rg.Point(center.x+width*0.5,center.y+height*0.5)
+        rectangle = rg.Rectangle(point1,point2)
+        rectangle.attach_to(window)
+        window.render()
+        center.x = center.x +radius*(1+(k+1)*2)
+        if x >= len(colors)-1:
+            x = 0
+        else:
+            x = x + 1
+
 
 
 # -----------------------------------------------------------------------------
