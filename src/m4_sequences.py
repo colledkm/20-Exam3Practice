@@ -410,14 +410,21 @@ def practice_problem4d(sequence):
       :rtype: int
     """
     ###########################################################################
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #     The testing code is already written for you (above).
     ###########################################################################
     # DIFFICULTY AND TIME RATINGS (see top of this file for explanation)
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 minutes.
     ###########################################################################
-
+    answer = 0
+    for k in range(len(sequence)-1):
+        compare = sequence[k]
+        if is_prime(compare) == True:
+            if is_prime(sequence[k+1])==True:
+                if compare != sequence[k+1]:
+                    answer = answer + compare
+    return answer
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
